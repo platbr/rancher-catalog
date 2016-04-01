@@ -1,0 +1,13 @@
+rexray:
+  image: wlan0/rexray
+  pid: host
+  privileged: true
+  environment:
+      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+      AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+  volumes:
+      - /run/docker/plugins:/run/docker/plugins
+      - /var:/var:shared
+      - /etc:/etc
+      - /dev:/dev
+  command: ["rexray", "start", "-f"]

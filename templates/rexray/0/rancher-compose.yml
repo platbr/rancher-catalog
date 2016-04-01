@@ -1,0 +1,15 @@
+.catalog:
+  name: "REX-Ray"
+  version: "v0.3.2"
+  description: "REX-Ray persistent storage"
+  questions:
+    - variable: "AWS_ACCESS_KEY"
+      label: "AWS access key"
+      description: "Access key to your AWS account"
+      type: "string"
+      required: true
+    - variable: "AWS_SECRET_KEY"
+      label: "AWS secret key"
+      description: "Secret key to your AWS account"
+      type: "string"
+      required: true

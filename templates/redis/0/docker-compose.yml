@@ -2,6 +2,6 @@ rexray:
   image: redis
   volumes:
       - ${REDIS_VOLUME}:/data
-  volume-driver: rexray
+  volume_driver: rexray
   labels:
     io.rancher.scheduler.global: 'true'

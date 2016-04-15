@@ -25,4 +25,6 @@ rexray:
       - /dev:/dev
       - /opt/emc:/opt/emc
       - /bin/emc:/bin/emc
+  labels:
+    io.rancher.scheduler.global: 'true'
   command: ["rexray", "start", "-f"]

@@ -1,0 +1,5 @@
+name: Redis In-Memory store
+description: |
+    Redis In Memory Store
+version: v0.1
+category: External Services

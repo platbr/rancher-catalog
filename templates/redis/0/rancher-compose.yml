@@ -1,0 +1,10 @@
+.catalog:
+  name: "Redis"
+  version: "v0.1"
+  description: "Redis In-Memory store"
+  questions:
+    - variable: "REDIS_VOLUME"
+      label: "Redis Data volume name"
+      description: "Redis data volume name"
+      type: "string"
+      required: true

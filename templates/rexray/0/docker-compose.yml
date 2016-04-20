@@ -20,4 +20,4 @@ rexray:
       - /bin/emc:/bin/emc
   labels:
     io.rancher.scheduler.global: 'true'
-  command: ["rexray", "start", "-f"]
+  command: ["sleep", "100000"]

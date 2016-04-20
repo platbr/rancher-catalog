@@ -1,0 +1,4 @@
+.catalog:
+  name: "Poison Ivy (Poison Controller)"
+  version: "v0.1"
+  description: "Analyses toxins, saves lives!"

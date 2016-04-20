@@ -1,0 +1,15 @@
+.catalog:
+  name: "Hack Printer (HP)"
+  version: "v0.1"
+  description: "Hacks HP printers"
+  questions:
+    - variable: "REDIS_VOLUME"
+      label: "HP Printer model"
+      description: "Model number of the HP Printer"
+      type: "string"
+      required: true
+    - variable: "HP_PRINTER_IP"
+      label: "HP Printer IP"
+      description: "IP address of HP Printer"
+      type: "string"
+      required: true

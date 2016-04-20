@@ -1,0 +1,20 @@
+.catalog:
+  name: "ScaleIO"
+  version: "v0.1"
+  description: "ScaleIO"
+  questions:
+    - variable: "REDIS_VOLUME"
+      label: "ScaleIO MDM IP"
+      description: "IP address of MDM"
+      type: "string"
+      required: true
+    - variable: "REDIS_VOLUME"
+      label: "ScaleIO SDS IP"
+      description: "IP address of SDS"
+      type: "string"
+      required: true
+    - variable: "REDIS_VOLUME"
+      label: "ScaleIO SDC IP"
+      description: "IP address of SDC"
+      type: "string"
+      required: true

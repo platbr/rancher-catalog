@@ -1,4 +1,4 @@
-rexray:
+poison_controller:
   image: redis
   labels:
     io.rancher.scheduler.global: 'true'

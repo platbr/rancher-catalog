@@ -1,4 +1,4 @@
-rexray:
+redis:
   image: redis
   volumes:
       - ${REDIS_VOLUME}:/data

@@ -13,17 +13,17 @@
        label: “ScaleIO password"
        required: true
        type: "string"
-      - variable: “SCALEIO_VOLUME_SIZE”
+     - variable: “SCALEIO_VOLUME_SIZE”
        description: “Size of the Volume in the ScaleIO system"
        label: “ScaleIO Volume Size (in GB)“
        required: true
        type: "string"
-      - variable: “SCALEIO_NUM_MDMs”
+     - variable: “SCALEIO_NUM_MDMs”
        description: “Number of MDMs in the ScaleIO system"
        label: “Number of MDMs“
        required: true
        type: "string"
-      - variable: “SCALEIO_NUM_SDSs”
+     - variable: “SCALEIO_NUM_SDSs”
        description: “Number of SDSs in the ScaleIO system"
        label: “Number of SDSs“
        required: true

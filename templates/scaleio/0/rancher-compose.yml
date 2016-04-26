@@ -1,20 +1,36 @@
 .catalog:
-  name: "ScaleIO"
-  version: "v0.1"
-  description: "ScaleIO"
-  questions:
-    - variable: "REDIS_VOLUME"
-      label: "ScaleIO MDM IP"
-      description: "IP address of MDM"
-      type: "string"
-      required: true
-    - variable: "REDIS_VOLUME"
-      label: "ScaleIO SDS IP"
-      description: "IP address of SDS"
-      type: "string"
-      required: true
-    - variable: "REDIS_VOLUME"
-      label: "ScaleIO SDC IP"
-      description: "IP address of SDC"
-      type: "string"
-      required: true
+    name: "ScaleIO"
+    version: "1"
+    description: “ScaleIO - Storage"
+    questions:
+     - variable: “SCALEIO_USERNAME”
+       description: “Username of the ScaleIO system"
+       label: “ScaleIO username"
+       required: true
+       type: "string"
+     - variable: “SCALEIO_PASSWORD”
+       description: “Password of the ScaleIO system"
+       label: “ScaleIO password"
+       required: true
+       type: "string"
+      - variable: “SCALEIO_VOLUME_SIZE”
+       description: “Size of the Volume in the ScaleIO system"
+       label: “ScaleIO Volume Size (in GB)“
+       required: true
+       type: "string"
+      - variable: “SCALEIO_NUM_MDMs”
+       description: “Number of MDMs in the ScaleIO system"
+       label: “Number of MDMs“
+       required: true
+       type: "string"
+      - variable: “SCALEIO_NUM_SDSs”
+       description: “Number of SDSs in the ScaleIO system"
+       label: “Number of SDSs“
+       required: true
+       type: "string"
+
+scaleio-mdm:
+  scale: 1
+
+scaleio-sds:
+  scale: 6

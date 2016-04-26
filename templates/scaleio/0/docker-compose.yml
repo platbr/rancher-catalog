@@ -1,4 +1,41 @@
-scaleio:
-  image: redis
+scaleio-mdm:
+  links: 
+   - scaleio-sds:sds
+  label:
+    io.rancher.scaleio: mdm
+  environment:
+    USERNAME: ${SCALEIO_USERNAME}
+    PASSWORD: ${SCALEIO_PASSWORD}
+    SIZE: ${SCALEIO_VOLUME_SIZE}
+  privileged: true
+  image: scaleio-mdm
+  command: mdm-start
+
+scaleio-sds:
+  links: 
+   - scaleio-mdm:mdm
+  label:
+    io.rancher.scaleio: sds
+  environment:
+    USERNAME: ${SCALEIO_USERNAME}
+    PASSWORD: ${SCALEIO_PASSWORD}
+    SIZE: ${SCALEIO_VOLUME_SIZE}
+  image: scaleio-sds
+  privileged: true
+  volumes:
+    - /var/run:/host/var/run
+  command: sds-start
+
+scaleio-sdc:
+  links:
+   - scaleio-mdm: mdm
+  environment:
+    USERNAME: ${SCALEIO_USERNAME}
+    PASSWORD: ${SCALEIO_PASSWORD}
+    SIZE: ${SCALEIO_VOLUME_SIZE}
   labels:
-    io.rancher.scheduler.global: 'true'
+    io.rancher.scheduler.global: ‘true’
+    io.rancher.scaleio: sdc
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.scaleio=mdm
+  image: scaleio-sdc
+  command: sdc-start

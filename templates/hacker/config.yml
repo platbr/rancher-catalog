@@ -1,5 +1,5 @@
-name: Hack Printer (HP)
+name: Hack LasterJet Infrastructure (HiP)
 description: |
-    Hacks hp printers
+    Hack HiP LaserJet Infrastructure
 version: v0.1
 category: External Services

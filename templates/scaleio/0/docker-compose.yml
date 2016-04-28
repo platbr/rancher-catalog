@@ -8,8 +8,8 @@ scaleio-mdm:
     PASSWORD: ${SCALEIO_PASSWORD}
     SIZE: ${SCALEIO_VOLUME_SIZE}
   privileged: true
-  image: scaleio-mdm
-  command: mdm-start
+  image: wlan0/rexray
+  command: ["sleep", "100000"]
 
 scaleio-sds:
   links: 
@@ -20,11 +20,11 @@ scaleio-sds:
     USERNAME: ${SCALEIO_USERNAME}
     PASSWORD: ${SCALEIO_PASSWORD}
     SIZE: ${SCALEIO_VOLUME_SIZE}
-  image: scaleio-sds
+  image: wlan0/rexray
   privileged: true
   volumes:
     - /var/run:/host/var/run
-  command: sds-start
+  command: ["sleep", "100000"]
 
 scaleio-sdc:
   links:
@@ -37,5 +37,5 @@ scaleio-sdc:
     io.rancher.scheduler.global: ‘true’
     io.rancher.scaleio: sdc
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.scaleio=mdm
-  image: scaleio-sdc
-  command: sdc-start
+  image: wlan0/rexray
+  command: ["sleep", "100000"]

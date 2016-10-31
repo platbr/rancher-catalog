@@ -1,0 +1,20 @@
+version: '2'
+services:
+  metadata:
+    image: rancher/metadata:v0.6.1
+    volumes:
+    - /var/tmp
+    command: router rancher-metadata -subscribe
+    labels:
+      io.rancher.sidekicks: metadata-router
+      io.rancher.container.create_agent: 'true'
+      io.rancher.scheduler.global: 'true'
+      io.rancher.container.agent_service.metadata: 'true'
+  metadata-router:
+    cap_add:
+    - NET_ADMIN
+    image: rancher/metadata:dev
+    network_mode: host
+    volumes_from:
+    - metadata
+    command: router

@@ -13,7 +13,7 @@ services:
   metadata-router:
     cap_add:
     - NET_ADMIN
-    image: rancher/metadata:dev
+    image: rancher/metadata:v0.6.1
     network_mode: host
     volumes_from:
     - metadata

@@ -1,0 +1,15 @@
+plugin-manager:
+  image: rancher/plugin-manager:v0.0.1
+  privileged: true
+  net: host
+  pid: host
+  command: plugin-manager --metadata-url http://169.254.169.250/2016-07-29
+  volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+  - /var/lib/docker:/var/lib/docker
+  - /lib/modules:/lib/modules:ro
+  - /run:/run:ro
+  - /var/run:/var/run:ro
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.container.dns: 'true'

@@ -1,0 +1,3 @@
+.catalog:
+  name: "Rancher Internal DNS"
+  version: "v0.0.1"

@@ -14,8 +14,7 @@ nfs-driver:
   - /run:/run
   - /dev:/host/dev
   - /var/lib/rancher/volumes:/var/lib/rancher/volumes:shared
-  metadata:
-    storage_driver:
+  storage_driver:
       name: rancher-nfs
       scope: environment
       volumeAccessMode: multiHostRW

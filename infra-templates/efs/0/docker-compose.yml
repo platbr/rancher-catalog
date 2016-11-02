@@ -1,7 +1,8 @@
-ebs-driver:
+efs-driver:
   privileged: true
   net: host
-  image: rancher/storage-ebs:v0.1.1
+  image: rancher/storage-efs:v0.1.1
+  pid: host
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.container.create_agent: 'true'
@@ -13,8 +14,7 @@ ebs-driver:
   - /run:/run
   - /dev:/host/dev
   - /var/lib/rancher/volumes:/var/lib/rancher/volumes:shared
-  metadata:
-    storage_driver:
-      name: rancher-ebs
+  storage_driver:
+      name: rancher-efs
       scope: environment
-      volumeAccessMode: singleHostRW
+      volumeAccessMode: multiHostRW

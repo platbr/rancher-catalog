@@ -31,7 +31,6 @@
     options:
      - rancher
      - aws
-     - gce
 
 kubernetes:
     metadata:

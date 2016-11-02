@@ -2,6 +2,7 @@ version: '2'
 services:
   metadata:
     image: rancher/metadata:v0.6.1
+    network_mode: bridge
     volumes:
     - /var/tmp
     command: router rancher-metadata -subscribe

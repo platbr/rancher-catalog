@@ -146,22 +146,6 @@ controller-manager:
     links:
         - kubernetes
 
-rancher-controller-manager:
-    command:
-        - rancher-controller-manager
-        - --master=https://kubernetes.kubernetes.rancher.internal:6443
-        - --address=0.0.0.0
-        - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
-        - --root-ca-file=/etc/kubernetes/ssl/ca.pem
-        - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
-    image: wlan0/k8s:test
-    labels:
-        io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.container.create_agent: "true"
-        io.rancher.container.agent.role: environmentAdmin
-    links:
-        - kubernetes
-
 rancher-kubernetes-agent:
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true

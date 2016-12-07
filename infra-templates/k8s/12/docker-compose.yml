@@ -17,7 +17,7 @@ kubelet:
         - --cluster-domain=cluster.local
         - --network-plugin=cni
         - --network-plugin-dir=/etc/cni/managed.d
-    image: rancher/k8s:v1.4.6-rancher1-1
+    image: wlan0/k8s:test
     volumes:
         - /run:/run
         - /var/run:/var/run
@@ -43,7 +43,7 @@ proxy:
         - --master=http://kubernetes.kubernetes.rancher.internal
         - --v=2
         - --healthz-bind-address=0.0.0.0
-    image: rancher/k8s:v1.4.6-rancher1-1
+    image: wlan0/k8s:test
     privileged: true
     net: host
     links:
@@ -96,7 +96,7 @@ kubernetes:
         - --runtime-config=batch/v2alpha1
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
-    image: rancher/k8s:v1.4.6-rancher1-1
+    image: wlan0/k8s:test
     links:
         - etcd
 
@@ -126,7 +126,7 @@ scheduler:
         - kube-scheduler
         - --master=http://kubernetes.kubernetes.rancher.internal
         - --address=0.0.0.0
-    image: rancher/k8s:v1.4.6-rancher1-1
+    image: wlan0/k8s:test
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
     links:
@@ -136,18 +136,34 @@ controller-manager:
     command:
         - kube-controller-manager
         - --master=https://kubernetes.kubernetes.rancher.internal:6443
-        - --cloud-provider=${CLOUD_PROVIDER}
         - --address=0.0.0.0
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
-    image: rancher/k8s:v1.4.6-rancher1-1
+    image: wlan0/k8s:test
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
         io.rancher.container.create_agent: "true"
         io.rancher.container.agent.role: environmentAdmin
     links:
         - kubernetes
+
+fake-controller-manager:
+    command:
+        - fake-controller-manager
+        - --master=https://kubernetes.kubernetes.rancher.internal:6443
+        - --address=0.0.0.0
+        - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
+        - --root-ca-file=/etc/kubernetes/ssl/ca.pem
+        - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
+    image: wlan0/k8s:test
+    labels:
+        io.rancher.scheduler.affinity:host_label_soft: orchestration=true
+        io.rancher.container.create_agent: "true"
+        io.rancher.container.agent.role: environmentAdmin
+    links:
+        - kubernetes
+
 
 rancher-kubernetes-agent:
     labels:

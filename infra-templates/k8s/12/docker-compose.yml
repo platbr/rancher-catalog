@@ -154,8 +154,8 @@ fake-controller-manager:
         - --master=https://kubernetes.kubernetes.rancher.internal:6443
         - --address=0.0.0.0
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
-        - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
+        - --use-service-account-credentials
     image: wlan0/k8s:test
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true

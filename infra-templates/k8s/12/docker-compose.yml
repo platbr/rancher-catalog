@@ -140,6 +140,7 @@ controller-manager:
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
+        - cloud-provider=external
     image: wlan0/k8s:test
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
@@ -148,14 +149,15 @@ controller-manager:
     links:
         - kubernetes
 
-fake-controller-manager:
+cloud-controller-manager:
     command:
-        - fake-controller-manager
+        - cloud-controller-manager
         - --master=https://kubernetes.kubernetes.rancher.internal:6443
         - --address=0.0.0.0
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
         - --use-service-account-credentials
+        - --cloud-provider=aws
     image: wlan0/k8s:test
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true

@@ -1,6 +1,6 @@
 .catalog:
   name: Kubernetes
-  version: v1.5.1-rancher1-7
+  version: v1.5.1-rancher1-9
   description: Rancher Kubernetes service
   minimum_rancher_version: v1.3.0-rc1
   questions:
@@ -31,6 +31,18 @@
     options:
      - rancher
      - aws
+  - variable: ETCD_SCALE
+    label: Number of replicated etcd instances
+    description: Deploy these many etcd containers on different hosts. Improves reliability
+    required: true
+    default: 1
+    type: enum
+    options:
+     - 1
+     - 3
+     - 5
+     - 7
+     - 9
 
 kubernetes:
     metadata:
@@ -47,10 +59,7 @@ kubernetes:
 
 etcd:
     retain_ip: true
-    scale_policy:
-        increment: 1
-        max: 3
-        min: 1
+    scale: ${ETCD_SCALE}
     health_check:
         port: 2378
         request_line: GET /health HTTP/1.0

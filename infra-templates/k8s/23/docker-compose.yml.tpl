@@ -93,6 +93,7 @@ kubernetes:
         - --tls-cert-file=/etc/kubernetes/ssl/cert.pem
         - --tls-private-key-file=/etc/kubernetes/ssl/key.pem
         - --runtime-config=batch/v2alpha1
+        - --storage-backend=etcd2
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
     image: wlan0/k8s:v1.7.0-alpha-rancher-cloud-controller
